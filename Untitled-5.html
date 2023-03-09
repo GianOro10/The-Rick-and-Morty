@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de personaje</title>
+</head>
+
+<body>
+    <h1 th:text="${personaje.getNombre()}"></h1>
+    <table>
+        <tr>
+            <td>Especie:</td>
+            <td th:text="${personaje.getEspecie()}"></td>
+        </tr>
+        <tr>
+            <td>Género:</td>
+            <td th:text="${personaje.getGenero()}"></td>
+        </tr>
+        <tr>
+            <td>Estatus:</td>
+            <td th:text="${personaje.getEstatus()}"></td>
+        </tr>
+        <tr>
+            <td>Origen:</td>
+            <td th:text="${personaje.getOrigen()}"></td>
+        </tr>
+    </table>
+    <img th:src="${personaje.getImagen()}" th:alt="${personaje.getNombre()}">
+</body>
+
+</html>

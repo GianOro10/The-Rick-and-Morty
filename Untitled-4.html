@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de personajes</title>
+</head>
+
+<body>
+    <h1>Lista de personajes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Estatus</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="personaje : ${personajes}">
+                <td><a th:href="@{/personajes/{id}(id=${personaje.getId()})}" th:text="${personaje.getNombre()}"></a>
+                </td>
+                <td th:text="${personaje.getEspecie()}"></td>
+                <td th:text="${personaje.getEstatus()}"></td>
+                <td><img th:src="${personaje.getImagen()}" th:alt="${personaje.getNombre()}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <ul>
+            <li th:if="${paginaActual > 1}"><a th:href="@{/personajes(pagina=1)}">Primera página</a></li>
+            <li th:if="${paginaActual > 1}"><a th:href="@{/personajes(pagina=${paginaActual - 1})}">Página anterior</a>
+            </li>
+            <li th:each="numeroPagina : ${#numbers.sequence(1, cantidadPaginas)}"
+                th:class="${numeroPagina == paginaActual} ? 'pagina-actual' : ''"><a
+                    th:href="@{/personajes(pagina=${numeroPagina})}" th:text="${numeroPagina}"></a></li>
+            <li th:if="${paginaActual < cantidadPaginas}"><a th:href="@{/personajes(pagina=${paginaActual + 1})}">Página
+                    siguiente</a></li>
+            <li th:if="${paginaActual < cantidadPaginas}"><a th:href="@{/personajes(pagina=${cantidadPaginas})}">Última
+                    página</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

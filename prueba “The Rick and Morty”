@@ -1,0 +1,8 @@
+public class Personaje {   
+    // se crea clase "Personaje" para almacenar la información de cada personaje
+    private String nombre;
+    private String especie;
+    private String imagen;
+    private String estatus;
+    
+}
